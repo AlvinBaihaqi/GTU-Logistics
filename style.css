@@ -1,0 +1,181 @@
+/* Font & Reset */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: hsl(206, 100%, 9%);
+  color: white;
+}
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 20px;
+  left: 52%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  background: hsl(206, 100%, 9%);
+  opacity: 85%;
+  padding: 10px 25px;
+  border-radius: 30px;
+  z-index: 100;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  opacity: 100%;
+}
+
+nav a:hover {
+  color: orange;
+}
+
+/* Header */
+header {
+  position: relative;
+  height: 100vh;
+  background-image: url('img/BACKROUND.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Gelap pada background untuk kontras */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Posisi Logo di tengah */
+header .logo {
+  position: absolute;
+  top: 40%; /* Tengah secara vertikal */
+  left: 33%; /* Tengah secara horizontal */
+  transform: translate(-50%, -50%); /* Geser untuk memastikan elemen benar-benar di tengah */
+  text-align: center;
+  z-index: 2;
+}
+
+/* Gambar logo */
+header .logo img {
+  width: 100%;  /* Membuat logo responsif */
+  max-width: 700px;  /* Meningkatkan ukuran maksimal logo */
+  height: auto;    /* Pastikan tinggi mengikuti lebar logo */
+}
+/* Sections */
+section {
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 6px solid orange;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: white;
+  margin-top: auto;
+}
+
+/* About Text */
+.about-text {
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  color: white;
+}
+
+/* Service Grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto 30px;
+  text-align: left;
+  font-size: 18px;
+  padding-top: 20px;
+  font-weight: 650;
+}
+
+/* Country with Outline */
+.country-list {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding-top: 10px;
+}
+
+.outlined-text {
+  text-shadow:
+    -1px -1px 0 orange,
+     1px -1px 0 orange,
+    -1px  1px 0 orange,
+     1px  1px 0 orange;
+}
+
+/* Gallery Slider */
+.slider {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 350px;
+  transition: opacity 1s ease-in-out;
+  border-radius: 20px;
+}
+
+.slide.active {
+  display: block;
+}
+
+/* Footer */
+footer {
+  border-top: 6px solid orange;
+  padding: 10px 30px;
+  background-color: #102E50;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 28px;
+  }
+
+  .about-text {
+    font-size: 16px;
+  }
+
+  .service-grid {
+    font-size: 16px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    padding: 8px 15px;
+    gap: 10px;
+  }
+}
