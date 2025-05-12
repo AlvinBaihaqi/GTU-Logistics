@@ -4,18 +4,19 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: hsl(206, 100%, 9%);
   color: white;
+  scroll-behavior: smooth;
 }
 
 /* Navigation Bar */
 nav {
   position: fixed;
   top: 20px;
-  left: 52%;
-  transform: translateX(-50%);
+  left: 50%;  /* Navbar tetap di tengah pada layar besar */
+  transform: translateX(-50%);  /* Menjaga navbar tetap di tengah */
   display: flex;
   gap: 20px;
   background: hsl(206, 100%, 9%);
-  opacity: 85%;
+  opacity: 0.85;
   padding: 10px 25px;
   border-radius: 30px;
   z-index: 100;
@@ -26,11 +27,29 @@ nav a {
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
-  opacity: 100%;
 }
 
 nav a:hover {
   color: orange;
+}
+
+/* Burger Icon */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.burger .line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
 }
 
 /* Header */
@@ -42,9 +61,13 @@ header {
   background-position: center;
   z-index: 0;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Gelap pada background untuk kontras */
 header::before {
   content: "";
   position: absolute;
@@ -53,22 +76,19 @@ header::before {
   z-index: 1;
 }
 
-/* Posisi Logo di tengah */
 header .logo {
-  position: absolute;
-  top: 40%; /* Tengah secara vertikal */
-  left: 33%; /* Tengah secara horizontal */
-  transform: translate(-50%, -50%); /* Geser untuk memastikan elemen benar-benar di tengah */
-  text-align: center;
+  position: relative;
   z-index: 2;
+  text-align: center;
+  margin-top: 60px;
 }
 
-/* Gambar logo */
 header .logo img {
-  width: 100%;  /* Membuat logo responsif */
-  max-width: 700px;  /* Meningkatkan ukuran maksimal logo */
-  height: auto;    /* Pastikan tinggi mengikuti lebar logo */
+  width: 350px;
+  max-width: 700px;
+  height: auto;
 }
+
 /* Sections */
 section {
   padding: 60px 20px;
@@ -145,37 +165,146 @@ section {
 
 /* Footer */
 footer {
-  border-top: 6px solid orange;
-  padding: 10px 30px;
   background-color: #102E50;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 30px 20px;
   color: white;
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 6px solid orange;
+}
+
+footer .footer-text {
   font-size: 14px;
-  flex-wrap: wrap;
+  font-weight: 600;
+  margin-bottom: 10px;
   text-align: center;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+footer .social-icons a {
+  color: white;
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  color: orange;
+}
+
+footer .social-icons img {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.3s;
+}
+
+footer .social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* Responsif untuk footer */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .social-icons {
+    margin-top: 10px;
+  }
+
+  footer .footer-text {
+    margin-bottom: 15px;
+  }
+}
+
+/* Transisi global untuk elemen yang berubah */
+* {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Efek hover pada logo */
+header .logo img:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+/* Efek hover pada tulisan layanan */
+.service-grid div:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 165, 0, 0.1);
+  padding-left: 8px;
+  border-left: 3px solid orange;
+}
+
+/* Efek hover pada slide gallery */
+.slide:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
+/* Efek hover pada judul section */
+.section-title:hover {
+  color: orange;
+  text-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
+}
+
+/* Efek hover pada nav link */
+nav a:hover {
+  transform: scale(1.1);
+}
+
+/* Efek bayangan muncul untuk teks country */
+.country-list {
+  transition: text-shadow 0.3s ease;
+}
+
+.country-list:hover {
+  text-shadow:
+    0 0 5px orange,
+    0 0 10px orange,
+    0 0 15px orange;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 28px;
-  }
-
-  .about-text {
-    font-size: 16px;
-  }
-
-  .service-grid {
-    font-size: 16px;
-  }
-
+  /* Navbar di kiri pada layar kecil */
   nav {
-    flex-wrap: wrap;
-    padding: 8px 15px;
-    gap: 10px;
+    left: 10px; /* Navbar diposisikan di kiri */
+    transform: none; /* Hapus transformasi untuk layar kecil */
+    flex-direction: column;
+    gap: 0;
+    padding: 20px 15px;
+  }
+
+  nav a {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  nav.active a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid white;
+    background-color: hsl(206, 100%, 9%);
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  nav {
+    left: 50%;  /* Navbar berada di tengah pada layar besar */
+    transform: translateX(-50%);
   }
 }
